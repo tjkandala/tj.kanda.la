@@ -7,7 +7,6 @@ import { readFile } from "fs/promises";
  *
  * .la grammar:
  *
- *
  */
 
 const getFiles = promisify(readdir);
@@ -19,6 +18,7 @@ type State = "" | "";
 async function main() {
   const filenames = await getFiles(postsDirectory());
 
+  // TODO: use createReadStream! don't keep all files in memory
   const textPromises: Promise<string>[] = filenames.map(name =>
     readFile(postsDirectory(name), "utf8")
   );
@@ -27,11 +27,13 @@ async function main() {
 
   for (const file of files) {
     console.log(file);
+
+    const tokenizer = createTokenizer(file);
   }
 }
 
 main();
 
-function tokenizer(source: string) {
+function createTokenizer(source: string) {
   let state = "";
 }
