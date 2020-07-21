@@ -1,0 +1,14 @@
+{
+  "name": "tj.kanda.la",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "",
+    "dev": "rm -rf ./dist && tsc && node dist/parser"
+  },
+  "dependencies": {
+    "@types/node": "^14.0.24",
+    "typescript": "^3.9.6"
+  }
+}
