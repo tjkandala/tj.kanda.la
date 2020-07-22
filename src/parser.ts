@@ -106,9 +106,19 @@ function tokenize(source: string) {
   }
 }
 
-function parser() {}
+type ParseTree = {};
 
-function renderer(parseTree: any) {}
+function parse(tokens: Token[]): ParseTree {
+  const parseTree = {};
+
+  return parseTree;
+}
+
+function render(parseTree: ParseTree): string {
+  let html = "";
+
+  return html;
+}
 
 /**
  * exercises:
