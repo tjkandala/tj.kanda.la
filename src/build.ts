@@ -1,6 +1,6 @@
 import { readdir, rmdir, createReadStream, createWriteStream } from "fs";
 import { promisify } from "util";
-import { readFile, writeFile, mkdir } from "fs/promises";
+import { readFile, writeFile, mkdir, fstat } from "fs/promises";
 
 import { Converter } from "showdown";
 const converter = new Converter();
@@ -12,11 +12,23 @@ const postsDirectory = (name?: string) =>
   __dirname + "/../posts/" + (name || "");
 const buildDirectory = __dirname + "/../build";
 
+const createPage = (inner: string) => `<!DOCTYPE html>
+<html>
+  <head>
+    <title>tj kandala</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    ${inner}
+    <script src="./index.js"></script>
+  </body>
+</html>
+`;
+
 async function main() {
   await rmrf(buildDirectory, { recursive: true });
   await mkdir(buildDirectory);
 
-  // [title, date]
   const metadata: {
     [filename: string]: {
       title: string;
@@ -70,22 +82,42 @@ async function main() {
 
       metadata[name] = jsonMetadata;
 
-      const html = converter.makeHtml(file);
-      return writeFile(__dirname + `/../build/${name}.html`, html);
+      const page = createPage(converter.makeHtml(file));
+
+      return writeFile(__dirname + `/../build/${name}.html`, page);
     })
   );
 
-  console.log(metadata);
+  const links = Object.keys(metadata).map(filename => {
+    const { title, date, genre } = metadata[filename];
+    return `<a href=${filename}.html>${title}</a>`;
+  });
 
-  // post metadata to json for js
+  // TODO: client side routing for page transitions
+
+  const header = `<nav>${links.join("")}</nav>`;
+  const footer = ``;
+
+  let html = `<!DOCTYPE html>
+  <html>
+    <head>
+      <title>tj kandala</title>
+      <link rel="stylesheet" href="./index.css" />
+    </head>
+    <body>
+      <h1>tj's personal website</h1>
+      ${header}
+      <script src="./index.js"></script>
+    </body>
+  </html>
+  `;
 
   // copy index.(css|html|js) to /build
-  const indexhtmlstream = createReadStream(__dirname + "/../public/index.html");
-  indexhtmlstream.pipe(createWriteStream(__dirname + "/../build/index.html"));
   const indexcssstream = createReadStream(__dirname + "/../public/index.css");
   indexcssstream.pipe(createWriteStream(__dirname + "/../build/index.css"));
   const indexjsstream = createReadStream(__dirname + "/../dist/index.js");
   indexjsstream.pipe(createWriteStream(__dirname + "/../build/index.js"));
+  await writeFile(__dirname + "/../build/index.html", html);
 }
 
 main();

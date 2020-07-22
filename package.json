@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf ./dist && tsc && node dist/parser",
+    "build": "rm -rf ./dist && tsc && node dist/build",
     "dev": "yarn build && cd build && python -m SimpleHTTPServer 1337"
   },
   "dependencies": {
