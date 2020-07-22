@@ -2,4 +2,8 @@
  * index.js
  */
 
-document.appendChild(document.createTextNode("hi!"));
+const para = document.createElement("p");
+
+para.appendChild(document.createTextNode("hello!"));
+
+document.body.appendChild(para);

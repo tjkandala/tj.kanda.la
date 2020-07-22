@@ -1,3 +1,11 @@
+&&&&
+{
+"title": "my first journal entry!",
+"date": "July 22, 2020",
+"genre": "general"
+}
+&&&&
+
 # My First Journal Entry!
 
 ## Why Journal?
