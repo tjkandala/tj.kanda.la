@@ -4,11 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "",
-    "dev": "rm -rf ./dist && tsc && node dist/parser"
+    "build": "rm -rf ./dist && tsc && node dist/parser",
+    "dev": "yarn build && cd build && python -m SimpleHTTPServer 1337"
   },
   "dependencies": {
     "@types/node": "^14.0.24",
+    "showdown": "^1.9.1",
     "typescript": "^3.9.6"
+  },
+  "devDependencies": {
+    "@types/showdown": "^1.9.3"
   }
 }
