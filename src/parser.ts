@@ -60,7 +60,7 @@ function tokenize(source: string) {
     char = source[cursor];
 
     switch (char) {
-      case "*":
+      case "*": {
         // lookahead
         let lookahead = cursor + 1;
         let possibleKeyword = "";
@@ -94,9 +94,39 @@ function tokenize(source: string) {
 
         tokens.push(char);
         break;
+      }
 
-      case "|":
+      case "|": {
+        // lookahead
+        let lookahead = cursor + 1;
+        let possibleKeyword = "";
+        while (lookahead < len) {
+          let nextChar = source[lookahead];
+          if (nextChar == "|") {
+            cursor = lookahead;
+            break;
+          }
+          possibleKeyword += nextChar;
+          lookahead++;
+        }
+
+        console.log(possibleKeyword);
+
+        switch (possibleKeyword) {
+          case "b":
+            break;
+          case "i":
+            console.log("italics!");
+            break;
+
+          default:
+            // illegal, throw error
+            console.log("illegal!");
+        }
+
+        tokens.push(char);
         break;
+      }
 
       default:
         break;
