@@ -34,7 +34,7 @@ main();
 /** [type, token] */
 type Token =
   | ["title", "*title*"]
-  | ["heading", "*header*"]
+  | ["heading", "*head*"]
   | ["subheading", "*subhead*"]
   | ["paragraph", "*p*"]
   | ["bold", "|b|"]
@@ -66,22 +66,38 @@ function tokenize(source: string) {
         let possibleKeyword = "";
         while (lookahead < len) {
           let nextChar = source[lookahead];
-          possibleKeyword += nextChar;
-          lookahead++;
           if (nextChar == "*") {
+            cursor = lookahead;
             break;
           }
+          possibleKeyword += nextChar;
+          lookahead++;
         }
 
+        console.log(possibleKeyword);
+
         switch (possibleKeyword) {
+          case "title":
+            break;
+          case "heading":
+            break;
+          case "subhead":
+            break;
+          case "p":
+            console.log("paragraph tag!");
+            break;
+
           default:
-            console.log(possibleKeyword);
+            // illegal, throw error
+            console.log("illegal!");
         }
 
         tokens.push(char);
         break;
+
       case "|":
         break;
+
       default:
         break;
     }
