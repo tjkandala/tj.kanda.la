@@ -1,8 +1,9 @@
 &&&&
 {
 "title": "my first journal entry!",
-"date": "July 22, 2020",
-"genre": "general"
+"date": "July 21, 2020",
+"genre": "general",
+"description": "first"
 }
 &&&&
 

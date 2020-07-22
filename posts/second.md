@@ -2,7 +2,8 @@
 {
 "title": "Web Performance Braindump",
 "date": "July 22, 2020",
-"genre": "tech"
+"genre": "tech",
+"description": "speed up your websites"
 }
 &&&&
 

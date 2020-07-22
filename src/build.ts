@@ -37,6 +37,7 @@ async function main() {
       title: string;
       date: string;
       genre: string;
+      description: string;
     };
   } = {};
 
@@ -79,7 +80,7 @@ async function main() {
       const jsonMetadata = JSON.parse(rawmetadata);
 
       // validate structure
-      ["title", "date", "genre"].forEach(key => {
+      ["title", "date", "genre", "description"].forEach(key => {
         if (!(key in jsonMetadata)) {
           throw new Error(`you forgot to specify ${key}`);
         }
@@ -93,10 +94,18 @@ async function main() {
     })
   );
 
-  const postLinks = Object.keys(metadata).map(filename => {
-    const { title, date, genre } = metadata[filename];
-    return `<a href="${filename}.html">${title}</a>`;
-  });
+  const sortedPosts = Object.keys(metadata)
+    .map(filename => {
+      const { date, ...rest } = metadata[filename];
+      return { date: Date.parse(date), filename, ...rest };
+    })
+    .sort((a, b) => a.date - b.date);
+
+  const postLinks = sortedPosts.map(
+    ({ title, date, genre, description, filename }) => {
+      return `<div><a href="${filename}.html">${title}</a><p>description</p></div>`;
+    }
+  );
 
   // TODO: client side routing for page transitions
   let index = createPage(`
