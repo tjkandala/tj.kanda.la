@@ -1,13 +1,10 @@
-import { readdir, rmdir, createReadStream, createWriteStream } from "fs";
-import { promisify } from "util";
-import { readFile, writeFile, mkdir, fstat } from "fs/promises";
+import { createReadStream, createWriteStream } from "fs";
+import { readFile, writeFile, mkdir, readdir, rmdir } from "fs/promises";
 
 import { Converter } from "showdown";
 const converter = new Converter();
 converter.setOption("noHeaderId", true);
 
-const getFiles = promisify(readdir);
-const rmrf = promisify(rmdir);
 const postsDirectory = (name?: string) =>
   __dirname + "/../posts/" + (name || "");
 const buildDirectory = __dirname + "/../build";
@@ -32,7 +29,7 @@ const createPage = (content: string) => `<!DOCTYPE html>
 `;
 
 async function main() {
-  await rmrf(buildDirectory, { recursive: true });
+  await rmdir(buildDirectory, { recursive: true });
   await mkdir(buildDirectory);
 
   const metadata: {
@@ -44,7 +41,7 @@ async function main() {
   } = {};
 
   // blog posts: markdown => html in /build
-  const filenames = await getFiles(postsDirectory());
+  const filenames = await readdir(postsDirectory());
   await Promise.all(
     filenames.map(async name => {
       let file = await readFile(postsDirectory(name), "utf8");
