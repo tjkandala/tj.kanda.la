@@ -1,3 +1,18 @@
 body {
   background-color: teal;
 }
+
+nav {
+  display: flex;
+  flex-direction: row;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+}
+
+ul a {
+  color: black;
+  text-decoration: none;
+}

@@ -1,9 +1,7 @@
 /**
  * index.js
+ *
+ * role: animated background. minimal js for easy degradation
  */
 
-const para = document.createElement("p");
-
-para.appendChild(document.createTextNode("hello!"));
-
-document.body.appendChild(para);
+console.log("loaded script!");
