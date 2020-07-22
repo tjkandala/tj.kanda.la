@@ -1,0 +1,13 @@
+# My First Journal Entry!
+
+## Why Journal?
+
+This is my first blog/journal post!
+blogging > microblogging
+
+## The "Tech" Choices
+
+- markdown is not context-free,
+- so it would be much harder to write a parser for it. i just want
+- an easier way to write blog posts that will be converted into valid HTML
+-
