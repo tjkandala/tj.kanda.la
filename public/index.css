@@ -2,18 +2,21 @@
 
 body {
   background-color: #29283f;
-  color: #b9bbbe;
+  /* color: #b9bbbe; */
+  color: rgba(255, 255, 255, 0.8);
   margin: 0 auto;
   max-width: 50em;
   font-family: "Noto Sans KR", "Helvetica", sans-serif;
 
   line-height: 1.5;
-  padding: 4em 1em;
+  padding: 2em 1em;
 }
 
 nav {
   display: flex;
   flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 ul {
@@ -28,4 +31,20 @@ ul a {
 
 h1 {
   font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+}
+
+h1.name {
+  font-size: 2rem;
+}
+
+.post-preview {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-preview-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
