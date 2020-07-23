@@ -26,7 +26,11 @@ ul {
 
 ul a {
   color: #b9bbbe;
+}
+
+a {
   text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 h1 {
@@ -38,6 +42,10 @@ h1.name {
   font-size: 2rem;
 }
 
+.post {
+  padding: 1rem 0rem;
+}
+
 .post-preview {
   display: flex;
   flex-direction: column;
@@ -47,4 +55,9 @@ h1.name {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.github {
+  height: 2rem;
+  width: 2rem;
 }

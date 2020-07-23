@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf ./dist && tsc && node dist/build",
-    "dev": "npm run build && npx serve build"
+    "dev": "npm run build && cd build && npx serve ."
   },
   "dependencies": {
     "@types/node": "^14.0.24",
