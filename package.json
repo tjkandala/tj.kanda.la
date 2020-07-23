@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf ./dist && tsc && node dist/build",
-    "dev": "npm run build && cd build && python -m SimpleHTTPServer 1337"
+    "dev": "npm run build && npx serve build"
   },
   "dependencies": {
     "@types/node": "^14.0.24",
