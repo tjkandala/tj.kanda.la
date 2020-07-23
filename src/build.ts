@@ -9,6 +9,13 @@ const postsDirectory = (name?: string) =>
   __dirname + "/../posts/" + (name || "");
 const buildDirectory = __dirname + "/../build";
 
+const bio = `
+This is my bio. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+aliquip ex ea commodo consequat.
+`;
+
 /** header and footer on all pages, including index. include social links */
 const header = `<nav>
 <a href="index.html">
@@ -129,7 +136,7 @@ async function main() {
   // TODO: client side routing for page transitions
   let index = createPage(`
   <div>
-  <p>TODO: description of me and/or the site :)</p>
+  <p class="bio">${bio}</p>
   <ul>
   ${postLinks.join("")}
   </ul>

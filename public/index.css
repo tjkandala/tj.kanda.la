@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Playfair+Display:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Playfair+Display:wght@500&display=swap");
 
 body {
   /* background-color: #29283f; */
@@ -20,18 +20,23 @@ nav {
   justify-content: space-between;
 }
 
+footer {
+  margin: 2rem 0rem;
+}
+
 ul {
   display: flex;
   flex-direction: column;
+  padding: 0 0;
 }
 
 ul a {
-  color: #b9bbbe;
+  font-weight: 700;
 }
 
 a {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.8);
+  color: #b9bbbe;
 }
 
 h1 {
@@ -44,6 +49,11 @@ h1.name {
   color: #72bfff;
 }
 
+span {
+  font-size: 14px;
+  color: #fecd95;
+}
+
 .top {
   position: fixed;
   top: 0;
@@ -52,6 +62,10 @@ h1.name {
   height: 6px;
   background: #fe99c1;
   z-index: 10;
+}
+
+.bio {
+  margin: 2rem 0rem;
 }
 
 .post {
@@ -67,6 +81,7 @@ h1.name {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .github {
