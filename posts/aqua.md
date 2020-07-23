@@ -1,7 +1,7 @@
 &&&&
 {
 "title": "Recreating the Aqua GUI with Baahu",
-"date": "July 22, 2020",
+"date": "July 24, 2020",
 "genre": "tech",
 "description": "An API design postmortem"
 }

@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Playfair+Display:wght@500&display=swap");
 
 body {
-  background-color: #29283f;
+  /* background-color: #29283f; */
+  background-color: #292a2b;
   /* color: #b9bbbe; */
-  color: rgba(255, 255, 255, 0.8);
+  color: #e6e6e6;
   margin: 0 auto;
   max-width: 50em;
   font-family: "Noto Sans KR", "Helvetica", sans-serif;
@@ -40,6 +41,17 @@ h1 {
 
 h1.name {
   font-size: 2rem;
+  color: #72bfff;
+}
+
+.top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 6px;
+  background: #fe99c1;
+  z-index: 10;
 }
 
 .post {
@@ -58,6 +70,6 @@ h1.name {
 }
 
 .github {
-  height: 2rem;
-  width: 2rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
