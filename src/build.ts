@@ -1,5 +1,5 @@
-import { createReadStream, createWriteStream } from "fs";
-import { readFile, writeFile, mkdir, readdir, rmdir } from "fs/promises";
+import { createReadStream, createWriteStream, promises } from "fs";
+const { readFile, writeFile, mkdir, readdir, rmdir } = promises;
 
 import { Converter } from "showdown";
 const converter = new Converter();
