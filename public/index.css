@@ -1,5 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Playfair+Display:wght@500&display=swap");
+
 body {
-  background-color: teal;
+  background-color: #29283f;
+  color: #b9bbbe;
+  margin: 0 auto;
+  max-width: 50em;
+  font-family: "Noto Sans KR", "Helvetica", sans-serif;
+
+  line-height: 1.5;
+  padding: 4em 1em;
 }
 
 nav {
@@ -13,6 +22,10 @@ ul {
 }
 
 ul a {
-  color: black;
+  color: #b9bbbe;
   text-decoration: none;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
 }

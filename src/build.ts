@@ -46,8 +46,10 @@ async function main() {
   await Promise.all(
     filenames.map(async name => {
       let file = await readFile(postsDirectory(name), "utf8");
+
       // don't need .md anymore
       name = name.slice(0, name.length - 3);
+
       // parse metadata from post
       let keyword = file.substring(0, 4);
 
@@ -59,8 +61,6 @@ async function main() {
 
       file = file.slice(4);
       let cursor = 0;
-
-      // console.log(file);
 
       while (cursor < file.length) {
         keyword = file[cursor];
@@ -97,13 +97,13 @@ async function main() {
   const sortedPosts = Object.keys(metadata)
     .map(filename => {
       const { date, ...rest } = metadata[filename];
-      return { date: Date.parse(date), filename, ...rest };
+      return { datestring: date, date: Date.parse(date), filename, ...rest };
     })
-    .sort((a, b) => a.date - b.date);
+    .sort((a, b) => b.date - a.date);
 
   const postLinks = sortedPosts.map(
-    ({ title, date, genre, description, filename }) => {
-      return `<div><a href="${filename}.html">${title}</a><p>description</p></div>`;
+    ({ title, datestring, genre, description, filename }) => {
+      return `<div><a href="${filename}.html">${title}</a><p>${description}</p><p>${datestring}</p></div>`;
     }
   );
 
